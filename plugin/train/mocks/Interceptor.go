@@ -1,9 +1,11 @@
 package mocks
 
-import "github.com/f2prateek/train"
-import "github.com/stretchr/testify/mock"
+import (
+	"net/http"
 
-import "net/http"
+	"github.com/f2prateek/train"
+	"github.com/stretchr/testify/mock"
+)
 
 func New() *Interceptor {
 	return &Interceptor{}

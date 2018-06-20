@@ -1,6 +1,8 @@
 package statham
 
-import "net/http"
+import (
+	"net/http"
+)
 
 func NewTransport(defaultTr http.RoundTripper, mapping Mapping) http.RoundTripper {
 	return &roundTripper{

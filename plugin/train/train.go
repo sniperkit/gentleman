@@ -1,7 +1,9 @@
 // Package train provides a http.RoundTripper with chainable middleware.
 package train
 
-import "net/http"
+import (
+	"net/http"
+)
 
 type Chain interface {
 	// Request returns the http.Request for this chain.

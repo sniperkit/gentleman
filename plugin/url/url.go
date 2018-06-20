@@ -1,11 +1,12 @@
 package url
 
 import (
-	c "github.com/sniperkit/gentleman/pkg/context"
-	p "github.com/sniperkit/gentleman/pkg/plugin"
 	"net/url"
 	"regexp"
 	"strings"
+
+	c "github.com/sniperkit/gentleman/pkg/context"
+	p "github.com/sniperkit/gentleman/pkg/plugin"
 )
 
 // URL parses and defines a new URL in the outgoing request

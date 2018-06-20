@@ -1,10 +1,12 @@
 package timeout
 
 import (
-	"github.com/nbio/st"
-	"github.com/sniperkit/gentleman/pkg/context"
 	"net/http"
 	"testing"
+
+	"github.com/nbio/st"
+
+	"github.com/sniperkit/gentleman/pkg/context"
 )
 
 func TestTimeout(t *testing.T) {

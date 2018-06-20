@@ -1,9 +1,11 @@
 package query
 
 import (
-	"github.com/nbio/st"
-	"github.com/sniperkit/gentleman/pkg/context"
 	"testing"
+
+	"github.com/nbio/st"
+
+	"github.com/sniperkit/gentleman/pkg/context"
 )
 
 func TestQuerySet(t *testing.T) {

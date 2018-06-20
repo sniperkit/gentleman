@@ -1,9 +1,10 @@
 package transport
 
 import (
+	"net/http"
+
 	c "github.com/sniperkit/gentleman/pkg/context"
 	p "github.com/sniperkit/gentleman/pkg/plugin"
-	"net/http"
 )
 
 // Set sets a new HTTP transport for the outgoing request

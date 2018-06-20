@@ -1,10 +1,12 @@
 package redirect
 
 import (
-	"github.com/nbio/st"
-	"github.com/sniperkit/gentleman/pkg/context"
 	"net/http"
 	"testing"
+
+	"github.com/nbio/st"
+
+	"github.com/sniperkit/gentleman/pkg/context"
 )
 
 func TestRedirectPolicy(t *testing.T) {

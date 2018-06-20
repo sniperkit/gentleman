@@ -1,12 +1,13 @@
 package timeout
 
 import (
-	g "github.com/sniperkit/gentleman/pkg"
-	c "github.com/sniperkit/gentleman/pkg/context"
-	p "github.com/sniperkit/gentleman/pkg/plugin"
 	"net"
 	"net/http"
 	"time"
+
+	g "github.com/sniperkit/gentleman/pkg"
+	c "github.com/sniperkit/gentleman/pkg/context"
+	p "github.com/sniperkit/gentleman/pkg/plugin"
 )
 
 // Timeouts represents the supported timeouts

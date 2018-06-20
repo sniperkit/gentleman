@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/nbio/st"
+
 	"github.com/sniperkit/gentleman/pkg/context"
 )
 

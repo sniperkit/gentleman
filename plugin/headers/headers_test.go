@@ -1,9 +1,11 @@
 package headers
 
 import (
-	"github.com/nbio/st"
-	"github.com/sniperkit/gentleman/pkg/context"
 	"testing"
+
+	"github.com/nbio/st"
+
+	"github.com/sniperkit/gentleman/pkg/context"
 )
 
 func TestHeaderSet(t *testing.T) {

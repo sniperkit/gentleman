@@ -1,10 +1,11 @@
 package proxy
 
 import (
-	c "github.com/sniperkit/gentleman/pkg/context"
-	p "github.com/sniperkit/gentleman/pkg/plugin"
 	"net/http"
 	"net/url"
+
+	c "github.com/sniperkit/gentleman/pkg/context"
+	p "github.com/sniperkit/gentleman/pkg/plugin"
 )
 
 // Set defines the proxy servers to be used based on the transport scheme

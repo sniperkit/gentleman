@@ -2,11 +2,13 @@ package multipart
 
 import (
 	"bytes"
-	"github.com/nbio/st"
-	"github.com/sniperkit/gentleman/pkg/context"
 	"io/ioutil"
 	"strings"
 	"testing"
+
+	"github.com/nbio/st"
+
+	"github.com/sniperkit/gentleman/pkg/context"
 )
 
 func TestFile(t *testing.T) {

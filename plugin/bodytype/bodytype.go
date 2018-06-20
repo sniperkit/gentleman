@@ -1,9 +1,10 @@
 package bodytype
 
 import (
+	"net/http"
+
 	c "github.com/sniperkit/gentleman/pkg/context"
 	p "github.com/sniperkit/gentleman/pkg/plugin"
-	"net/http"
 )
 
 // Types is a map of MIME type aliases

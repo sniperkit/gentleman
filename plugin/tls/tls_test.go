@@ -2,10 +2,12 @@ package tls
 
 import (
 	"crypto/tls"
-	"github.com/nbio/st"
-	"github.com/sniperkit/gentleman/pkg/context"
 	"net/http"
 	"testing"
+
+	"github.com/nbio/st"
+
+	"github.com/sniperkit/gentleman/pkg/context"
 )
 
 func TestAuthBasic(t *testing.T) {

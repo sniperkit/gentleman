@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"gopkg.in/h2non/gentleman.v2"
-	"gopkg.in/h2non/gentleman.v2/plugins/transport"
+	gentleman "github.com/sniperkit/gentleman/pkg"
+
+	"github.com/sniperkit/gentleman/plugin/transport"
 )
 
 func main() {

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"gopkg.in/h2non/gentleman.v2"
+	gentleman "github.com/sniperkit/gentleman/pkg"
 )
 
 func main() {

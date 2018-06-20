@@ -1,0 +1,10 @@
+hash: a0109e58dfe99b59005aff25332f42917eeea8b18d53d9c292d0bce2fc51ee3d
+updated: 2018-06-20T15:55:38.369551819+02:00
+imports:
+- name: golang.org/x/net
+  version: 92b859f39abd2d91a854c9f9c4621b2f5054a92d
+  subpackages:
+  - publicsuffix
+testImports:
+- name: github.com/nbio/st
+  version: e9e8d9816f3268def6dcbd2dea03301f40e9de94

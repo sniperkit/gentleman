@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"gopkg.in/h2non/gentleman.v2"
-	"gopkg.in/h2non/gentleman.v2/context"
-	"gopkg.in/h2non/gentleman.v2/plugins/headers"
+	gentleman "github.com/sniperkit/gentleman/pkg"
+	"github.com/sniperkit/gentleman/pkg/context"
+	"github.com/sniperkit/gentleman/plugin/headers"
 )
 
 func main() {

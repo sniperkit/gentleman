@@ -3,9 +3,10 @@ package main
 import (
 	"fmt"
 
-	"gopkg.in/h2non/gentleman.v2"
-	"gopkg.in/h2non/gentleman.v2/plugins/query"
-	"gopkg.in/h2non/gentleman.v2/plugins/url"
+	gentleman "github.com/sniperkit/gentleman/pkg"
+
+	"github.com/sniperkit/gentleman/plugin/query"
+	"github.com/sniperkit/gentleman/plugin/url"
 )
 
 func main() {

@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"gopkg.in/h2non/gentleman.v2"
-	"gopkg.in/h2non/gentleman.v2/context"
-	"gopkg.in/h2non/gentleman.v2/mux"
-	"gopkg.in/h2non/gentleman.v2/plugins/url"
+	gentleman "github.com/sniperkit/gentleman/pkg"
+	"github.com/sniperkit/gentleman/pkg/context"
+	"github.com/sniperkit/gentleman/pkg/mux"
+	"github.com/sniperkit/gentleman/plugin/url"
 )
 
 func main() {

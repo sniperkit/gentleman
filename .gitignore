@@ -28,3 +28,9 @@ _testmain.go
 *.out
 *.tmp
 .DS_Store
+
+
+vendor
+vendor/
+vendor/*
+vendor/**

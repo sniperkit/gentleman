@@ -1,0 +1,7 @@
+package: github.com/sniperkit/gentleman
+import:
+- package: golang.org/x/net
+  subpackages:
+  - publicsuffix
+testImport:
+- package: github.com/nbio/st

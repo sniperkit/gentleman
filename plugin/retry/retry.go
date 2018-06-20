@@ -8,8 +8,9 @@ import (
 	"time"
 
 	retry "gopkg.in/eapache/go-resiliency.v1/retrier"
-	"gopkg.in/h2non/gentleman.v2/context"
-	"gopkg.in/h2non/gentleman.v2/plugin"
+
+	c "github.com/sniperkit/gentleman/pkg/context"
+	p "github.com/sniperkit/gentleman/pkg/plugin"
 )
 
 const (
@@ -58,16 +59,16 @@ var Evaluator = func(err error, res *http.Response, req *http.Request) error {
 }
 
 // New creates a new retry plugin based on the given retry strategy.
-func New(retrier Retrier) plugin.Plugin {
+func New(retrier Retrier) p.Plugin {
 	if retrier == nil {
 		retrier = ConstantBackoff
 	}
 
 	// Create retry new plugin
-	plu := plugin.New()
+	plu := p.New()
 
 	// Attach the middleware handler for before dial phase
-	plu.SetHandler("before dial", func(ctx *context.Context, h context.Handler) {
+	plu.SetHandler("before dial", func(ctx *c.Context, h c.Handler) {
 		InterceptTransport(ctx, retrier)
 		h.Next(ctx)
 	})
@@ -76,8 +77,8 @@ func New(retrier Retrier) plugin.Plugin {
 }
 
 // InterceptTransport is a middleware function handler that intercepts
-// the HTTP transport based on the given HTTP retrier and context.
-func InterceptTransport(ctx *context.Context, retrier Retrier) error {
+// the HTTP transport based on the given HTTP retrier and c.
+func InterceptTransport(ctx *c.Context, retrier Retrier) error {
 	newTransport := &Transport{retrier, Evaluator, ctx.Client.Transport, ctx}
 	ctx.Client.Transport = newTransport
 	return nil
@@ -89,13 +90,13 @@ type Transport struct {
 	retrier   Retrier
 	evaluator EvalFunc
 	transport http.RoundTripper
-	context   *context.Context
+	context   *c.Context
 }
 
 // RoundTrip implements the required method by http.RoundTripper interface.
 // Performs the network transport over the original http.Transport but providing retry support.
 func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
-	res := t.context.Response
+	res := t.c.Response
 
 	// Cache all the body buffer
 	buf, err := ioutil.ReadAll(req.Body)
@@ -119,7 +120,7 @@ func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	})
 
 	// Restore original http.Transport
-	t.context.Client.Transport = t.transport
+	t.c.Client.Transport = t.transport
 
 	return res, err
 }

@@ -31,15 +31,15 @@ func newHTTPTestContext() *httpTestContext {
 
 func Test_LoggerRoundTripper(t *testing.T) {
 	cases := []struct {
-		createPlugin func(out io.Writer) plugin.Plugin
+		createPlugin func(out io.Writer) p.Plugin
 	}{
 		{
-			createPlugin: func(out io.Writer) plugin.Plugin {
+			createPlugin: func(out io.Writer) p.Plugin {
 				return New(out)
 			},
 		},
 		{
-			createPlugin: func(out io.Writer) plugin.Plugin {
+			createPlugin: func(out io.Writer) p.Plugin {
 				return FromLogger(log.New(out, "[gentleman] ", log.LstdFlags))
 			},
 		},

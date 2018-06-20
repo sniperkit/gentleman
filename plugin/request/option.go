@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"gopkg.in/h2non/gentleman.v1/plugin"
+	p "github.com/sniperkit/gentleman/pkg/plugin"
 )
 
 // Option is wrapper struct of http option
@@ -16,7 +16,7 @@ type Option struct {
 	Timeout   time.Duration
 	Retry     bool
 	Debug     bool
-	Plugins   []plugin.Plugin
+	Plugins   []p.Plugin
 	UserAgent string
 
 	// Basic Auth

@@ -1,7 +1,7 @@
 package debug
 
 import (
-	"github.com/evalphobia/httpwrapper/request"
+	"github.com/sniperkit/gentleman/plugin/request"
 )
 
 func init() {

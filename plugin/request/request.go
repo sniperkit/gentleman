@@ -3,13 +3,14 @@ package request
 import (
 	"fmt"
 
-	"gopkg.in/h2non/gentleman-retry.v1"
-	"gopkg.in/h2non/gentleman.v1"
-	"gopkg.in/h2non/gentleman.v1/plugins/auth"
-	"gopkg.in/h2non/gentleman.v1/plugins/body"
-	"gopkg.in/h2non/gentleman.v1/plugins/headers"
-	"gopkg.in/h2non/gentleman.v1/plugins/query"
-	"gopkg.in/h2non/gentleman.v1/plugins/timeout"
+	gentleman "github.com/sniperkit/gentleman/pkg"
+
+	"github.com/sniperkit/gentleman/plugin/auth"
+	"github.com/sniperkit/gentleman/plugin/body"
+	"github.com/sniperkit/gentleman/plugin/headers"
+	"github.com/sniperkit/gentleman/plugin/query"
+	"github.com/sniperkit/gentleman/plugin/retry"
+	"github.com/sniperkit/gentleman/plugin/timeout"
 )
 
 // GET sends GET request with option.

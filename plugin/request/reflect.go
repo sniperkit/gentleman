@@ -1,6 +1,8 @@
 package request
 
-import "reflect"
+import (
+	"reflect"
+)
 
 // convertTo converts struct to any data format(result).
 func convertTo(tagName string, param interface{}, result interface{}, fn func(result interface{}, key string, value interface{})) {

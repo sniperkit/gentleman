@@ -7,9 +7,10 @@ import (
 	"net"
 	"net/http/httputil"
 
-	"gopkg.in/h2non/gentleman.v1"
-	"gopkg.in/h2non/gentleman.v1/context"
-	"gopkg.in/h2non/gentleman.v1/plugin"
+	gentleman "github.com/sniperkit/gentleman/pkg"
+
+	c "github.com/sniperkit/gentleman/pkg/context"
+	p "github.com/sniperkit/gentleman/pkg/plugin"
 )
 
 // debug is flag for debugging HTTP request/response
@@ -26,9 +27,9 @@ func DebugOff() {
 }
 
 // debugRequest returns plugin to show HTTP request details.
-func debugRequest() plugin.Plugin {
-	p := plugin.New()
-	p.SetHandler("before dial", func(ctx *context.Context, h context.Handler) {
+func debugRequest() p.Plugin {
+	p := p.New()
+	p.SetHandler("before dial", func(ctx *c.Context, h c.Handler) {
 		req := ctx.Request
 		body, _ := ioutil.ReadAll(req.Body)
 		req.Body = ioutil.NopCloser(bytes.NewReader(body))

@@ -1,4 +1,4 @@
-package transport
+package transport_callbacks
 
 import (
 	"net/http"
@@ -6,11 +6,11 @@ import (
 
 	"github.com/nbio/st"
 
-	"github.com/sniperkit/gentleman/pkg/context"
+	c "github.com/sniperkit/gentleman/pkg/context"
 )
 
-func TestSetTransport(t *testing.T) {
-	ctx := context.New()
+func TestSetTransportCallbacks(t *testing.T) {
+	ctx := c.New()
 	fn := newHandler()
 	transport := &http.Transport{}
 	Set(transport).Exec("request", ctx, fn.fn)
@@ -20,13 +20,13 @@ func TestSetTransport(t *testing.T) {
 }
 
 type handler struct {
-	fn     context.Handler
+	fn     c.Handler
 	called bool
 }
 
 func newHandler() *handler {
 	h := &handler{}
-	h.fn = context.NewHandler(func(c *context.Context) {
+	h.fn = context.NewHandler(func(c *c.Context) {
 		h.called = true
 	})
 	return h

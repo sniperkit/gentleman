@@ -5,12 +5,12 @@ gentleman's plugin to easily define the HTTP transport to be used by `http.Clien
 ## Installation
 
 ```bash
-go get -u github.com/sniperkit/gentleman/plugin/transport
+go get -u github.com/sniperkit/gentleman/plugin/transport_callbacks
 ```
 
 ## API
 
-See [godoc](https://godoc.org/github.com/h2non/gentleman/plugins/transport) reference.
+See [godoc](https://godoc.org/github.com/h2non/gentleman/plugins/transport_callbacks) reference.
 
 ## Example
 
@@ -21,7 +21,7 @@ import (
   "fmt"
   "net/http"
   "github.com/sniperkit/gentleman/pkg"
-  "github.com/sniperkit/gentleman/plugin/transport"
+  tc "github.com/sniperkit/gentleman/plugin/transport_callbacks"
 )
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
   cli := gentleman.New()
 
   // Define the default HTTP transport
-  cli.Use(transport.Set(http.DefaultTransport))
+  cli.Use(tc.Set(http.DefaultTransport))
 
   // Perform the request
   res, err := cli.Request().URL("http://httpbin.org/headers").Send()

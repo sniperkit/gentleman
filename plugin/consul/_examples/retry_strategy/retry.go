@@ -5,10 +5,12 @@ import (
 	"time"
 
 	"gopkg.in/eapache/go-resiliency.v1/retrier"
-	"gopkg.in/h2non/gentleman-consul.v2"
-	"gopkg.in/h2non/gentleman-mock.v2"
-	"gopkg.in/h2non/gentleman.v2"
 	"gopkg.in/h2non/gock.v1"
+
+	gentleman "github.com/sniperkit/gentleman/pkg"
+
+	"github.com/sniperkit/gentleman/plugin/consul"
+	"github.com/sniperkit/gentleman/plugin/mock"
 )
 
 const consulValidResponse = `

@@ -7,9 +7,11 @@ import (
 	"time"
 
 	"github.com/hashicorp/consul/api"
-	"gopkg.in/h2non/gentleman-retry.v2"
-	"gopkg.in/h2non/gentleman.v2/context"
-	"gopkg.in/h2non/gentleman.v2/plugin"
+
+	c "github.com/sniperkit/gentleman/pkg/context"
+	p "github.com/sniperkit/gentleman/pkg/plugin"
+
+	"github.com/sniperkit/gentleman/plugin/retry"
 )
 
 // Consul represents the Consul plugin adapter for gentleman,
@@ -32,8 +34,8 @@ type Consul struct {
 }
 
 // New creates a new Consul client with the given config
-// and returns the gentleman plugin.
-func New(config *Config) plugin.Plugin {
+// and returns the gentleman p.
+func New(config *Config) p.Plugin {
 	return NewClient(config).Plugin()
 }
 
@@ -44,9 +46,9 @@ func NewClient(config *Config) *Consul {
 }
 
 // Plugin returns the gentleman plugin to be plugged.
-func (c *Consul) Plugin() plugin.Plugin {
-	handlers := plugin.Handlers{"before dial": c.OnBeforeDial}
-	return &plugin.Layer{Handlers: handlers}
+func (c *Consul) Plugin() p.Plugin {
+	handlers := p.Handlers{"before dial": c.OnBeforeDial}
+	return &p.Layer{Handlers: handlers}
 }
 
 // IsUpdated returns true if the current list of catalog services is up-to-date,
@@ -101,7 +103,7 @@ func makeInstances(entries []*api.ServiceEntry) []string {
 }
 
 // SetServerURL sets the request URL fields based on the given Consul service instance.
-func (c *Consul) SetServerURL(ctx *context.Context, host string) {
+func (c *Consul) SetServerURL(ctx *c.Context, host string) {
 	// Define server URL based on the best node
 	ctx.Request.URL.Scheme = c.Config.Scheme
 	ctx.Request.URL.Host = host
@@ -109,7 +111,7 @@ func (c *Consul) SetServerURL(ctx *context.Context, host string) {
 
 // GetBestCandidateNode retrieves and returns the best service node candidate
 // asking to Consul server catalog or reading catalog from cache.
-func (c *Consul) GetBestCandidateNode(ctx *context.Context) (string, error) {
+func (c *Consul) GetBestCandidateNode(ctx *c.Context) (string, error) {
 	nodes, err := c.GetNodes()
 	if err != nil {
 		return "", err
@@ -130,8 +132,8 @@ func (c *Consul) GetBestCandidateNode(ctx *context.Context) (string, error) {
 	return nodes[0], nil
 }
 
-// UseBestCandidateNode sets the best service node URL in the given gentleman context.
-func (c *Consul) UseBestCandidateNode(ctx *context.Context) error {
+// UseBestCandidateNode sets the best service node URL in the given gentleman c.
+func (c *Consul) UseBestCandidateNode(ctx *c.Context) error {
 	node, err := c.GetBestCandidateNode(ctx)
 	if err != nil {
 		return err
@@ -145,7 +147,7 @@ func (c *Consul) UseBestCandidateNode(ctx *context.Context) error {
 // OnBeforeDial is a middleware function handler that replaces
 // the outgoing request URL and provides a new http.RoundTripper if necessary
 // in order to handle request failures and retry it accordingly.
-func (c *Consul) OnBeforeDial(ctx *context.Context, h context.Handler) {
+func (c *Consul) OnBeforeDial(ctx *c.Context, h c.Handler) {
 	// Define the server retries
 	ctx.Set("$consul.retries", 0)
 

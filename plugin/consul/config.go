@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/consul/api"
+
 	"gopkg.in/h2non/gentleman-retry.v2"
 )
 

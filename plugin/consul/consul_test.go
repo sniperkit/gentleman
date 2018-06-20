@@ -6,9 +6,13 @@ import (
 
 	"github.com/nbio/st"
 	"gopkg.in/eapache/go-resiliency.v1/retrier"
-	"gopkg.in/h2non/gentleman-mock.v2"
-	"gopkg.in/h2non/gentleman.v2"
 	"gopkg.in/h2non/gock.v1"
+
+	gentleman "github.com/sniperkit/gentleman/pkg"
+	c "github.com/sniperkit/gentleman/pkg/context"
+	p "github.com/sniperkit/gentleman/pkg/plugin"
+
+	"github.com/sniperkit/gentleman/plugin/mock"
 )
 
 const consulValidResponse = `

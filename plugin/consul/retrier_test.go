@@ -4,12 +4,13 @@ import (
 	"testing"
 
 	"github.com/nbio/st"
-	"gopkg.in/h2non/gentleman.v2/context"
+
+	c "github.com/sniperkit/gentleman/pkg/context"
 )
 
 func TestRetrier(t *testing.T) {
 	consul := NewClient(NewConfig("consul.server", "foo"))
-	retrier := &Retrier{Consul: consul, Context: context.New(), Retry: DefaultRetrier}
+	retrier := &Retrier{Consul: consul, Context: c.New(), Retry: DefaultRetrier}
 
 	calls := 0
 	retrier.Run(func() error {
@@ -22,7 +23,7 @@ func TestRetrier(t *testing.T) {
 
 func TestNewRetrier(t *testing.T) {
 	consul := NewClient(NewConfig("consul.server", "foo"))
-	retrier := NewRetrier(consul, context.New())
+	retrier := NewRetrier(consul, c.New())
 
 	calls := 0
 	retrier.Run(func() error {

@@ -3,8 +3,9 @@ package main
 import (
 	"fmt"
 
-	"gopkg.in/h2non/gentleman-consul.v2"
-	"gopkg.in/h2non/gentleman.v2"
+	"github.com/sniperkit/gentleman/plugin/consul"
+
+	gentleman "github.com/sniperkit/gentleman/pkg"
 )
 
 func main() {

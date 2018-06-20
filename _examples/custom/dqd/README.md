@@ -1,2 +1,0 @@
-# dqd
-Dequeue daemon
